@@ -14,7 +14,7 @@
     {% block content %}
 
     <section class="logo">
-        <img src="{% static '/images/logo.png' %}" alt="logo" />
+     <h1>YPREE</h1>
       </section>
       
     {% for message in messages %}
@@ -31,11 +31,13 @@
     {% if user.is_authenticated %}
     <h3>hello {{ fname }}</h3>
     <h4>you're succefully logged in</h4>
+    <button type="submit"><a href="/profile">profile</a></button>
     <button type="submit"><a href="/signout">logout</a></button>
     {% else %}
     <button type="submit"><a href="/signin">login</a></button>
     <button type="submit"><a href="/register">register</a></button>
     <button type="submit"><a href="/contact">contact us</a></button>
+    <button type="submit"><a href="/profile">profile</a></button>
     {% endif %}
     
     {% endblock %} 

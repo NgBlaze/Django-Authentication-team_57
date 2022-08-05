@@ -11,6 +11,10 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
+from django.contrib.auth.decorators import login_required
+from .forms import UpdateUserForm, UpdateProfileForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 # Create your views here.
 def home(request):
@@ -140,3 +144,21 @@ def password_reset_request(request):
 		}
 
 	return render(request, "authentication/password/password_reset.html", context)
+
+@login_required
+def profile(request):
+	if request.method == 'POST':
+		user_form = UpdateUserForm(request.POST, instance=request.user)
+		profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+		if user_form.is_valid() and profile_form.is_valid():
+			user_form.save()
+			profile_form.save()
+			messages.success(request, 'Your profile is updated successfully')
+			return redirect(to='users-profile')
+	else:
+		user_form = UpdateUserForm(instance=request.user)
+		profile_form = UpdateProfileForm(instance=request.user.profile)
+
+	return render(request, 'authentication/profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
