@@ -97,6 +97,7 @@ def contact(request):
 			'message':form.cleaned_data['message'], 
 			}
 			message = "\n".join(body.values())
+			form.save()
 
 			try:
 				send_mail(subject, message, 'admin@example.com', ['admin@example.com']) 
@@ -137,7 +138,7 @@ def password_reset_request(request):
 					return redirect ("/password_reset/done/")
 			else:
 			    messages.error(request,"please provide email for this account.")
-	password_reset_form = PasswordResetForm()
+			password_reset_form = PasswordResetForm()
 
 	context={
 		"password_reset_form":password_reset_form

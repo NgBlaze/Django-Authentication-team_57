@@ -1,14 +1,24 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.models import User
 from .models import Profile
+from .models import Contact
 
-# Create your forms here.
 
-class ContactForm(forms.Form):
-	first_name = forms.CharField(max_length = 50)
-	last_name = forms.CharField(max_length = 50)
-	email_address = forms.EmailField(max_length = 150)
-	message = forms.CharField(widget = forms.Textarea, max_length = 2000)
+# Create your forms here
+
+class ContactForm(ModelForm):
+	class Meta:
+		model = Contact
+		fields = ['first_name', 'last_name', 'email_address', 'message']
+
+		
+
+	def __init__(self, *args, **kwargs):
+		super(ContactForm, self).__init__(*args, **kwargs)
+		for name, field in self.fields.items():
+			field.widget.attrs.update({'class': 'contact-us__input-box'})
+
 
 class UpdateUserForm(forms.ModelForm):
 	username = forms.CharField(max_length=100,

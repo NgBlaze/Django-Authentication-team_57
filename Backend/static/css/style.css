@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #F3FAFD;
+    font-family: 'Outfit', sans-serif;
+}
+
 body{
     margin: 2.5em 4em;
     font-size: 0.8rem;
@@ -98,5 +106,50 @@ div.hasAcct a:hover {
 .large_font{
     margin: 0;
     font-size: 1.5rem;
+}
+
+.contact-us__header-content{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+}
+
+.contact-us__header-content h1{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.contact-us__header-content p{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.contact-us__form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.contact-us__input-box{
+    padding: 0.3rem 1.5rem;
+    width: 20rem;
+    line-height: 2;
+    margin: 0.5rem auto;
+    border-radius: 5px;
+    border: 1px solid #81B6C4;
+    box-shadow: 0.5px 0.5px #81B6C4;
+}
+
+.contact-us__btn{
+    width: 20rem;
+    border-radius: 5px;
+    border: 1px solid #81B6C4;
+    padding: 0.6rem 1.5rem;
+    margin: 0rem auto 4rem;
+    background-color: #81B6C4;
+    font-weight: bolder;
 }
 
