@@ -15,10 +15,10 @@ body{
     color: #153037;
     font-family: Outfit;
 }
-main{
+/* main{
     display:flex;
     margin-left: 5%;
-}
+} */
 
 section.logo{
     width: 15%;
